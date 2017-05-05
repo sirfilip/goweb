@@ -1,0 +1,27 @@
+{{ define "title" -}}
+go-blog-new-post
+{{- end }}
+
+
+
+{{ define "content" -}}
+
+<h2>Create New Post</h2>
+<form method="post">
+    {{ if .Errors }}
+        <ul class="errors">
+            {{ range .Errors }}
+                <li>{{.}}</li>
+            {{ end }}
+        </ul>
+    {{ end }}
+    <label>Title</label>
+    <input type="text" name="title" value="{{ .Title }}" />
+
+    <label>Content</label>
+    <textarea name="content">{{ .Content }}</textarea>
+    
+    <input type="submit" value="Create" />
+</form>
+
+{{- end }}

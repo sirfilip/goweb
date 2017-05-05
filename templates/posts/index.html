@@ -1,0 +1,19 @@
+{{ define "title" -}}
+Go-Blog-Home
+{{- end }}
+
+{{ define "content" -}}
+
+<h1>The posts</h1>
+
+<a href="/posts/new">Create new post</a>
+
+{{ range .Posts }}
+    <div class="post">
+        <div class="title">{{ .Title }}</div>
+        <div class="content">{{ .Content }}</div>
+        <div class="publish-date">Published At: <i>{{ .PublishedAt }}</i></div>
+    </div>
+{{ end }}
+
+{{- end }}
