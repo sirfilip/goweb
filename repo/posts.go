@@ -1,7 +1,7 @@
 package repo
 
 import (
-	"goblog/model"
+	"goweb/model"
 	"time"
 
 	"github.com/jmoiron/sqlx"
@@ -24,9 +24,9 @@ func (pr *PostRepo) Posts() ([]*model.Post, error) {
 	return posts, nil
 }
 
-func (pr *PostRepo) Create(title, content string) (*model.Post, error) {
-	post := &model.Post{Title: title, Content: content}
-	result, err := pr.conn.Exec("INSERT INTO posts (title, content, published_at) VALUES (?, ?, ?)", title, content, time.Now())
+func (pr *PostRepo) Create(post *model.Post) (*model.Post, error) {
+	publishedAt := time.Now()
+	result, err := pr.conn.Exec("INSERT INTO posts (title, content, published_at) VALUES (?, ?, ?)", post.Title, post.Content, publishedAt)
 	if nil != err {
 		return post, err
 	}
@@ -35,5 +35,6 @@ func (pr *PostRepo) Create(title, content string) (*model.Post, error) {
 		return post, err
 	}
 	post.ID = lastInsertId
+	post.PublishedAt = publishedAt
 	return post, nil
 }

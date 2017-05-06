@@ -1,11 +1,14 @@
 package form
 
-import govalidator "gopkg.in/asaskevich/govalidator.v4"
+import (
+	"goweb/model"
+
+	"github.com/asaskevich/govalidator"
+)
 
 type NewPost struct {
-	Title   string
-	Content string
-	Errors  []string
+	*model.Post
+	Errors []string
 }
 
 func (f *NewPost) Submit(title, content string) bool {

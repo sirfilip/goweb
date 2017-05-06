@@ -1,9 +1,10 @@
 package main
 
 import (
-	"goblog/form"
-	"goblog/renderer"
-	"goblog/repo"
+	"goweb/form"
+	"goweb/model"
+	"goweb/renderer"
+	"goweb/repo"
 	"html/template"
 	"net/http"
 
@@ -43,9 +44,9 @@ func main() {
 	})
 
 	router.HandleFunc("/posts/new", func(w http.ResponseWriter, r *http.Request) {
-		f := &form.NewPost{}
+		f := &form.NewPost{Post: &model.Post{}}
 		if r.Method == "POST" && f.Submit(r.FormValue("title"), r.FormValue("content")) {
-			_, err := repo.PostRepository(db).Create(f.Title, f.Content)
+			_, err := repo.PostRepository(db).Create(f.Post)
 			if nil != err {
 				http.Error(w, err.Error(), http.StatusInternalServerError)
 				return
