@@ -6,7 +6,12 @@
     </head>
     <body>
         <div class="container">
-            {{ template "content" .}}
+          <ul class="menu">
+            <li><a href="/register">Register</a></li>
+            <li class="separator"></li>
+            <li><a href="/login">Login</a></li>
+          </ul> 
+          {{ template "content" .}}
         </div>
     </body>
 </html>

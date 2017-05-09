@@ -1,0 +1,28 @@
+{{ define "title" -}}
+go-blog-register
+{{- end }}
+
+{{ define "content" -}}
+
+<h2>Register</h2>
+{{ if .Errors }}
+  <ul class="errors">
+    {{ range .Errors }}
+    <li>{{.}}</li>
+    {{ end }}
+  </ul>
+{{ end }}
+<form method="POST">
+  <label>Username</label>
+  <input type="text" name="username" value="{{.Username}}" />
+
+  <label>Email</label>
+  <input type="text" name="email" value="{{.Email}}" />
+
+  <label>Password</label>
+  <input type="password" name="password" value="" />
+
+  <input type="submit" value="Register" />
+</form>
+
+{{- end }}

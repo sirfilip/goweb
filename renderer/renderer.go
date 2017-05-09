@@ -20,7 +20,7 @@ func New(w http.ResponseWriter) *Renderer {
 func (r *Renderer) Render(templateName string, data interface{}) {
 	t, err := template.ParseFiles("templates/layouts/"+r.layout, "templates/"+templateName+".html")
 	if nil != err {
-		fmt.Println(err)
+		fmt.Fprintf(r.w, err.Error())
 		return
 	}
 	t.Execute(r.w, data)

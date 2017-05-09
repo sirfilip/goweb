@@ -2,6 +2,9 @@ body {
     background: #fcfcfc;
     color: #333;
 }
+ a, a:visited {
+   color: #000;
+ }
 
 .container {
     width: 960px;
@@ -17,6 +20,28 @@ ul.errors {
     color: #900;
     padding: 0;
     list-style: none;
+}
+
+ul.menu {
+  list-style: none;
+  padding: 0;
+}
+
+ul.menu li {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+ul.menu li.separator {
+  width: 0px;
+  height: 20px;
+  border-right: 1px solid #000;
+  margin: 0px 5px;
+}
+
+ul.menu a {
+  display: block;
+  padding: 5px;
 }
 
 .post {

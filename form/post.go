@@ -11,6 +11,10 @@ type NewPost struct {
 	Errors []string
 }
 
+func NewPostForm() *NewPost {
+	return &NewPost{Post: &model.Post{}, Errors: make([]string, 0)}
+}
+
 func (f *NewPost) Submit(title, content string) bool {
 	f.Title = title
 	f.Content = content
